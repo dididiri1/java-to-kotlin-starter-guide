@@ -186,13 +186,106 @@ fun judgeNumber2(number: Int) {
 
 ![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/05_05.png?raw=true
 
+### 정리 
+- if / if – else / if - else if – else 모두 Java와 문법이 동일하다.
+- 단 Kotlin에서는Expression으로 취급된다.
+  - 때문에 Kotlin에서는 삼항연산자가 없다
+- Java의 switch는 Kotlin에서 when으로 대체되었고, when은 더강력한기능을갖는다
+
+
 ## 6강. 코틀린에서 반복문을 다루는 방법
+1. for-each문
+2. 전통적인for문
+3. Progression과 Range
+4. while 문
+
+### 1. for each문
+Java
+```
+List<Long> numbers = Arrays.asList(1L, 2L, 3L);
+
+for (Long number : numbers) {
+     System.out.println("number = " + number);
+}
+```
+
+Kotlin
+```
+fun main() {
+    val numbers = listOf(1L, 2L, 3L)
+    for (number in numbers) {
+        println(number)
+    }
+}
+```
+
+### 2.전통적인for문
+Java
+```
+for (int i = 1; i<=3; i++) {
+    System.out.println(i);
+}
+```
+
+Kotlin
+```
+for (i in 1..3) {
+   println(i)
+}
+
+```
+내려가는경우는?!
+```
+for (i in 3 downTo 1) {
+     println(i)
+}
+```
+2칸씩올라가는경우는?!
+
+```
+for (i in 1..5 step 2) {
+     println(i)
+}
+```
+
+### 3. Progression과 Range
 
 
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_01.png?raw=true
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_02.png?raw=true
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_03.png?raw=true
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_04.png?raw=true
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_05.png?raw=true
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_06.png?raw=true
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_07.png?raw=true
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_08.png?raw=true
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_09.png?raw=true
 
+### 4. While문
 
+Java
+```
+int i = 1;
+while (i <= 3) {
+   System.out.println(i);
+   i++;
+}
+```
 
+Kotlin
+```
+var i = 1; // i는 아래서 변경되어야 하니깐 val 대신에 var로 써야된다.
+while (i <= 3) {
+   println(i)
+   i++
+}
+```
 
+### 정리
+- for each 문에서Java는 : Kotlin은 in 을 사용한다.
+- 전통적인 for문에서 Kotlin은 등차수열과 in을 사용한다.
+- 그 외 for문 문법은 모두 동일하다.
+- while문과 do while문은 더욱더 놀랍도록 동일하다.
 
 
 
