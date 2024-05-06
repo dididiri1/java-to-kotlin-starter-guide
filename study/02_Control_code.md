@@ -374,3 +374,161 @@ fun readFile(path: String) {
 
 
 ## 8강. 코틀린에서 함수를 다루는 방법
+1. 함수 선언문법
+2. default parameter
+3. named argument (parameter)
+4. 같은타입의여러파라미터받기(가변인자)
+
+### 1.함수 선언문법
+
+#### 두정수를받아더큰정수를반환하는예제
+Java
+```
+public int max(int a, int b) {
+    if(a > b) {
+        return a;
+    }
+    return b; 
+}
+```
+
+Kotlin
+```
+fun max(a: Int, b: Int): Int {
+    if(a > b) {
+        return a
+    } 
+    return b
+}
+
+fun max2(a: Int, b: Int): Int { // Expression
+    return if(a > b) {
+        a
+    } else {
+        b
+    }
+}
+
+fun max2(a: Int, b: Int): Int =
+    if(a > b) {
+        a
+    } else {
+        b
+    }
+}
+
+fun max(a: Int, b: Int): Int = if  a > b) a else b
+```
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/08_01.png?raw=true
+
+> block { } 을 사용하는 경우에는 반환 타입이 Unit이 아니면     
+> 명시적으로 작성해주어야 한다
+
+- 함수는 클래스 안에 있을수도, 파일 최상단에 있을수도 있다.
+- 또한, 한 파일안에 여러 함수들이 있을 수도 있다.
+
+### 2. default parameter 
+
+#### 주어진 문자열을 N번 출력하는 예제
+
+```
+fun main() {
+    repeat("Hello")
+}
+
+fun repeat(str: String, num: Int = 3, useNewLine: Boolean = true) {
+    for (i in 1..num) {
+        if (useNewLine) {
+            println(str)
+        } else {
+            println(str)
+        }
+    }
+}
+```
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/08_02.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/08_03.png?raw=true
+
+#### named argument parameter
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/08_04.png?raw=true
+
+
+```
+fun main() {
+    repeat("Hello", useNewLine = false)
+}
+
+fun repeat(str: String, num: Int = 3, useNewLine: Boolean = true) {
+    for (i in 1..num) {
+        if (useNewLine) {
+            println("${str} : ture")
+        } else {
+            println("${str} : false")
+        }
+    }
+}
+```
+
+- builder를 직접 만들지 않고 builder의 장점을 가지게 된다.
+```
+fun main() {
+    //printNameAndGender("FEMALE", "홍길동")
+    printNameAndGender(name = "홍길동", gender = "MALE")
+}
+
+fun printNameAndGender(name: String, gender: String) {
+    println(name)
+    println(gender)
+}
+```
+
+- Kotlin에서 Java 함수를 가져다 사용할 떄는 
+- named argumnet를 사용할 수 없다.
+
+### 4.같은 타입의 여러 파라미터 받기(가변인자)
+- 타입... 을 쓰면 가변인자 사용
+Java
+```
+public static void printAll(String... strings) {
+    for (String str: strings) {
+        System.out.println(str);
+    }
+}
+```
+- 배열을 직접 넣거나, comma를 이용해 여러 파라미터를 넣거나
+```
+String[] array = new String[]{"A", "B", "C"};
+printAll(array);
+
+printAll("A", "B", "C");
+```
+
+- 배열을 바로 넣는대신 스프레드연산자(*)를 붙여주어야 한다
+Kotlin
+```
+fun main() {
+    printAll("A", "B", "C")
+
+    val array = arrayOf("A", "B", "C")
+    // printAll(array) error
+    printAll(*array)
+}
+
+fun printAll(vararg string: String) {
+    for (str in string) {
+        println(str)
+    }
+}
+```
+
+### 정리
+- 함수의 문법은 Jav와 다르다!
+- body가 하나의 값으로 간주되는 경우 block를 없앨 수도 있고, block이 없다면 반환 타입을 없앨 수도 있다.
+- 함수 파라미터에 기본값을 설정해줄 수 있다.
+- 함수를 호출할때 특정 파라미터를 지정해 넣어줄 수 있다.
+- 가변인자에는 vararg 키워드를 사용하며, 가변인자 함수를 배열과 호출할 떄는 *를 붙여주어야 한다.
+
