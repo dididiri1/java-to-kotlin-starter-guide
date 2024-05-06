@@ -188,7 +188,7 @@ fun judgeNumber2(number: Int) {
 
 ### 정리 
 - if / if – else / if - else if – else 모두 Java와 문법이 동일하다.
-- 단 Kotlin에서는Expression으로 취급된다.
+- 단 Kotlin에서는 Expression으로 취급된다.
   - 때문에 Kotlin에서는 삼항연산자가 없다
 - Java의 switch는 Kotlin에서 when으로 대체되었고, when은 더강력한기능을갖는다
 
@@ -249,8 +249,6 @@ for (i in 1..5 step 2) {
 ```
 
 ### 3. Progression과 Range
-
-
 ![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_01.png?raw=true
 ![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_02.png?raw=true
 ![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_03.png?raw=true
@@ -288,13 +286,91 @@ while (i <= 3) {
 - while문과 do while문은 더욱더 놀랍도록 동일하다.
 
 
-
-
-
-
-
-
-
 ## 7강. 코틀린에서 예외를 다루는 방법
+
+1. try catch finally 구문
+2. Checked Exception과 Unchecked Exception
+3. try with resources
+
+
+### 1. try catch finally구문
+Java 
+```
+private int parseIntOrThrow(@NotNull String str) {
+     try {
+         return Integer.parseInt(str);
+     } catch (NumberFormatException e) {
+         throw new IllegalArgumentException(String.format("주어진 %s는 숫자가 아닙니다", str));
+     }
+}
+```
+
+- 타입이뒤에위치하고
+- new를사용하지않음
+- 포맷팅이간결함
+Kotlin
+```
+fun parseIntOrThrow(str: String): Int {
+    try {
+        return str.toInt()
+    } catch (e: NumberFormatException) {
+        throw IllegalArgumentException("주어진 ${str}는 숫자가 아닙니다")
+    }
+}
+```
+
+- 주어진 문자열을 정수로 변경하는 예제 실패하면null을반환
+```
+fun parseIntOrThrow(str: String): Int? {
+    return try {
+        return str.toInt()
+    } catch (e: NumberFormatException) {
+        null
+    }
+}
+```
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/07_01.png?raw=true
+
+### 2. Checked Exception과 Unchecked Exception
+Kotlin
+```
+fun readFile() { // throws 구문이 없다!!
+    val currentFile = File(".")
+    val file = File(currentFile.absolutePath + "/a.txt")
+    val reader = BufferedReader(FileReader(file))
+    println(reader.readLine())
+    reader.close()
+}
+```
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/07_02.png?raw=true
+
+### 3. try with resources
+Java
+```
+public void readFile(String path) throws IOException {
+    try (BufferedReader reader = new BufferedReader(new FileReader(path))) {
+        System.out.println(reader.readLine());
+    }
+}
+```
+Kotlin
+```
+fun readFile(path: String) {
+    BufferedReader(FileReader(path)).use { reader ->
+        println(reader.readLine())
+    }
+}
+```
+> 참고: Kotlin에는 try with resources 사라지고 use를 사용하는구나 정도만 기억하기   
+> 대신 use라는 inline 확장함수를 사용한다. 섹션 4에서 자세히 설명한다함.
+
+
+### 정리 
+- try catch finally 구문은 문법적으로 완전 히동일하다.
+  - Kotlin에서는 try catch가 expression이다. 
+- Kotlin에서 모든 예외는 Unchecked Exception이다.
+- Kotlin에서는 try with resources 구문이 없다. 대신 코틀린의 언어적 특징을 활용해 close를 호출해준다.
+
 
 ## 8강. 코틀린에서 함수를 다루는 방법
