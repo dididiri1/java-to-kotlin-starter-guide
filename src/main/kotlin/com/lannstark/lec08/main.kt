@@ -4,7 +4,7 @@ fun main() {
     printAll("A", "B", "C")
 
     val array = arrayOf("A", "B", "C")
-    printAll(array) // error
+    // printAll(array) // error
     printAll(*array)
 }
 
