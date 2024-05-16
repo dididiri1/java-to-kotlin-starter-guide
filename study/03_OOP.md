@@ -291,3 +291,304 @@ class Person(
 -  실제 메모리에 존재하는 것과 무관하게 custom getter 와 custom setter를 만들 수 있다.
 - custom getter, custom setter 에서 무한 루프를 막기 위해 field라닌 키워드를 사용한다.
   - 이름 **backing field** 라고 부른다.
+
+## 10.코틀린에서 상속을다루는방법
+1. 추상 클래스
+2. 인터페이스
+3. 클래스를 상속할때 주의할 점
+4. 상속 관련 지시어 정리
+
+### 1.추상 클래스
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_01.png?raw=true
+
+Java
+```
+public abstract class JavaAnimal {
+
+    protected final String species;
+    protected final int legCount;
+
+    public JavaAnimal(String species, int legCount) {
+        this.species = species;
+        this.legCount = legCount;
+    }
+
+    abstract public void move();
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public int getLegCount() {
+        return legCount;
+    }
+
+}
+
+```
+
+Kotlin
+```
+abstract class Animal(
+    protected val species: String,
+    protected val legCount: Int,
+
+) {
+    abstract fun move()
+    
+}
+```
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_02.png?raw=true
+Java
+```
+public class JavaCat extends JavaAnimal {
+
+   public JavaCat(String species) {
+       super(species, 4);
+   }
+
+   @Override
+   public void move() {
+       System.out.println("고양이가 사뿐 사뿐 걸어가~");
+   }
+
+}
+
+```
+- extends 키워드를 사용하지 않고 : 을 사용한다.
+- 코틀린에서는 어떤 클래스를 상속받을 떄 무조건 상위 클래스의 생성자를 바로 호출한다.
+- override를 필수적으로 붙여 주어야 한다.
+Kotlin
+```
+class Cat (
+    species: String
+) : Animal(species, 4){
+
+    override fun move() {
+        println("고양이가 사뿐 사뿐 걸어가~")
+    }
+}
+```
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_03.png?raw=true
+
+Java
+```
+public final class JavaPenguin extends JavaAnimal implements JavaSwimable, JavaFlyable {
+
+  private final int wingCount;
+
+  public JavaPenguin(String species) {
+    super(species, 2);
+    this.wingCount = 2;
+  }
+
+  @Override
+  public void move() {
+    System.out.println("펭귄이 움직입니다~ 꿱꿱");
+  }
+
+  @Override
+  public int getLegCount() {
+    return super.legCount + this.wingCount;
+  }
+
+  @Override
+  public void act() {
+    JavaSwimable.super.act();
+    JavaFlyable.super.act();
+  }
+
+}
+```
+Kotlin
+```
+abstract class Animal(
+    protected val species: String,
+    protected open val legCount: Int,
+
+) {
+    abstract fun move()
+
+}
+
+class Penguin(
+    species: String
+) : Animal(species, 2) {
+
+    private val wingCount: Int = 2
+
+    override fun move() {
+        println("펭권이 움직인다~")
+    }
+
+    override val legCount: Int
+        get() = super.legCount + this.wingCount
+}
+```
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_04.png?raw=true
+
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_05.png?raw=true
+
+- 상위 클래스에 접근하는 키워드는 supper로 Java와 똑같다.
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_06.png?raw=true
+
+#### Java, Kotlin 모두 추상 클래스는인 스턴스화 할 수 없다
+
+### 2. 인터페이스
+#### Flyable과 Swimmable을 구현한 Penguin
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_07.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_08.png?raw=true
+
+Java
+```
+public interface JavaSwimable {
+
+  default void act() {
+    System.out.println("어푸 어푸");
+  }
+
+}
+
+public interface JavaFlyable {
+
+  default void act() {
+    System.out.println("파닥 파닥");
+  }
+
+}
+
+
+```
+
+- default 키워드 없이 메소드 구현이 가능
+- Kotlin에서도 추상 메소드를 만들 수 있다.
+Kotlin
+```
+interface Swimable {
+
+    fun act() {
+        println("어푸 어푸")
+    }
+}
+
+interface Flyable {
+
+    fun act() {
+        println("파닥 파닥")
+    }
+}
+```
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_09.png?raw=true
+
+Java
+```
+public final class JavaPenguin extends JavaAnimal implements JavaSwimable, JavaFlyable {
+
+  private final int wingCount;
+
+  public JavaPenguin(String species) {
+      super(species, 2);
+      this.wingCount = 2;
+  }
+
+  @Override
+  public void move() {
+      System.out.println("펭귄이 움직입니다~ 꿱꿱");
+  }
+
+  @Override
+  public int getLegCount() {
+      return super.legCount + this.wingCount;
+  }
+
+  @Override
+  public void act() {
+      JavaSwimable.super.act();
+      JavaFlyable.super.act();
+  }
+
+}
+
+```
+
+- 인터페이스 구현도 : 을 사용한다.
+- 중복되는 인터페이스를 특정할때 **super<타입>.함수** 사용
+- Java, Kotlin 모두 인터페이스를 인스턴스화할수없다
+Kotlin
+```
+class Penguin(
+    species: String
+) : Animal(species, 2), Swimable, Flyable {
+
+    private val wingCount: Int = 2
+
+    override fun move() {
+        println("펭권이 움직인다~")
+    }
+
+    override val legCount: Int
+        get() = super.legCount + this.wingCount
+
+    override fun act() {
+        super<Swimable>.act()
+        super<Flyable>.act()
+    }
+}
+```
+
+### 3. 클래스를상속받을때주의할점
+
+Kotlin
+```
+fun main() {
+    Derived(300)
+}
+
+open class Base(
+    open val number: Int = 100
+) {
+    init {
+        println("Base Class")
+        println(number)
+    }
+}
+
+class Derived(
+    override val number: Int
+) : Base(number) {
+    init {
+        println("Derived Class")
+    }
+}
+```
+출력
+```
+Base Class
+0
+Derived Class
+```
+> 참고: 상위 클래스를 설계 할때 생성자 또는 초기화 블록에 사용되는 프로퍼티에는  
+> open을 피해야 한다.
+
+### 4. 상속관련키워드4가지정리
+
+1. final : override를 할 수 없게 한다. default로 보이지 않게 존재한다.
+2. open : override를 열어 준다.
+3. abstract : 반드시 override 해야 한다.
+4. override : 상위 타입을 오버라이드하고있다.
+
+### 정리
+- 상속 또는 구현을 할 때에 :을사용해야한다.
+- 상위 클래스 상속을 구현할 때 생성자를 반드시 호출해야 한다.
+- override를 필수로 붙여야 한다.
+- 추상 멤버가 아니면기본적으로 오버라이드가 불가능하다.
+  - open을 사용해주어야 한다.
+- 상위 클래스의 생성자 또는 초기화 블록에서 open 프로퍼티를
+  - 사용하면 얘기치 못한 버그가 생길 수 있다.
