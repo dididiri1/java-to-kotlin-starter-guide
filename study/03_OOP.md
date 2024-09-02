@@ -592,3 +592,87 @@ Derived Class
   - open을 사용해주어야 한다.
 - 상위 클래스의 생성자 또는 초기화 블록에서 open 프로퍼티를
   - 사용하면 얘기치 못한 버그가 생길 수 있다.
+
+## 11. 코틀린에서 접근 제어를 다루는 방법
+1. 자바와 코틀린의 가시성 제어
+2. 코틀린 파일의 접근 제어
+3. 다양한 구성요소의 접근 제어
+4. Java와 Kotlin을 함께 사용할 경우 주의할 점
+
+### 1. 자바와 코틀린의 가시성 제어
+
+#### JAVA
+| 접근 제어     |            설명             |
+|:----------|:-------------------------:|
+| public    |       모든 곳에서 접근 가능        |
+| protected | 같은 패키지 또는 하위 클래스에서만 접근 가능 |
+| default   |      같은 패키지에서만 접근 가능      |
+| private   |    선언된 클래스 내에서만 접근 가능     |
+
+#### Kotlin
+| 접근 제어     |               설명               |
+|:----------|:------------------------------:|
+| public    |          모든 곳에서 접근 가능          |
+| protected | **선언된 클래스** 또는 하위 클래스에서만 접근 가능 |
+| internal  |       **같은 모듈에서만 접근 가능**       |
+| private   |       선언된 클래스 내에서만 접근 가능       |
+
+### 2. 코틀린 파일의 접근 제어
+코틀린은 .kt 파일에 변수, 함수, 클래스 여러개를 바로 만들 수 있다.
+
+### 3. 다양한 구성요소의 접근 제어 - 생성자
+Java에서 유틸성 코드를 만들때 abstract class + private constuctor를 사용해서 인스턴스화를 막았죠?
+
+```
+public abstract class StringUtils {
+   private StringUtrils() {}
+   
+   public boolean isDirectoryPath(String path) {
+       return path.endsWith("/");
+   }
+}
+
+```
+프로퍼티도 가시성 범위는 동일합니다. 단!    
+프로퍼티의 가시성을 제어하는 방법으로는...
+
+### 3. 다양한 구성요소의 접근 제어 - 생성자
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/11_01.png?raw=true
+
+### 3. 다양한 구성요소의 접근 제어 - 생성자
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/11_02.png?raw=true
+
+### 4. Java와 Kotlin을 함께 사용할 때주의할점
+
+Internal은 바이트 코드 상public이 된다.  
+때문에Java 코드에서는Kotlin 모듈의internal 코드를가져올수있다
+
+### 4. Java와 Kotlin을 함께 사용할 경우 주의할 점
+Kotlin의 protected와 Java의 protected는 다르다.  
+Java는 같은패키지의Kotlin protected 멤버에 접근할수있다.
+
+### 정리
+Kotlin에서 패키지는namespace 관리용이기때문에  
+**protected**는 의미가 달라졌다.
+
+Kotlin에서 패키지는namespace 관리용이기때문에  
+protected는 의미가 달라졌다.   
+Kotlin에서는 **default**가 사라지고, 모듈간의접근을통제하는  
+**internal**이 새로 생겼다.
+
+Kotlin에서 패키지는namespace 관리용이기때문에
+protected는 의미가 달라졌다.   
+Kotlin에서는 default가 사라지고, 모듈간의 접근을통제하는  
+internal이 새로 생겼다.  
+생성자에 접근 지시어를 붙일 때는 **constructor**를명시적으로 써주어야한다.
+
+Kotlin에서 패키지는namespace 관리용이기때문에  
+protected는 의미가 달라졌다.  
+Kotlin에서는 default가 사라지고, 모듈간의 접근을통제하는  
+internal이 새로 생겼다.  
+생성자에 접근지시어를 붙일때는 constructor를명시적으로  
+써주어야한다.   
+유틸성 함수를 만들 때는 파일 최상단을 이용하면 편리하다.
+
+프로퍼티의custom setter에접근지시어를붙일수있다.  
+Java에서 Kotlin 코드를 사용할 때 internal과 protected는 주의해야 한다.
