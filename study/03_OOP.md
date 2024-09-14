@@ -676,3 +676,136 @@ internal이 새로 생겼다.
 
 프로퍼티의custom setter에접근지시어를붙일수있다.  
 Java에서 Kotlin 코드를 사용할 때 internal과 protected는 주의해야 한다.
+
+## Lec 12. 코틀린에서 object 키워드를 다루는 방법
+1. static 함수의 변수
+2. 싱글톤
+3. 익명 클래스 
+
+### 1. static 함수와 변수
+- 코틀린에서는 static이 없다 대신 companion object 사용
+- static: 클래스가 인스턴스화 될 떄 새로운 값이 복제되는게 아니라  
+          정적으로 인스턴스 끼리의 값을 공유
+- companion object: 클래스와 동행하는 유일한 오브젝트
+
+```
+class Person private constructor(
+    var name: String,
+    var age: Int,
+) {
+
+    companion object {
+        val MIN_AGE = 1 <--- 런타임 시에 변수가 할당
+        fun newBaby(name: String): Person {
+            return Person(name, MIN_AGE)
+        }
+    }
+}
+```
+
+```
+class Person private constructor(
+    var name: String,
+    var age: Int,
+) {
+
+    companion object {
+        private const val MIN_AGE = 1 <--- 컴파일 시에 변수가 할당
+        fun newBaby(name: String): Person {
+            return Person(name, MIN_AGE)
+        }
+    }
+}
+```
+> 참고: 진짜 상수에 붙이기 위한 용도 기본 타입과 String에 붙일 수 있음
+#### Java와 차이점
+companion object 즉 동반객체도 하나의 객체로 간주된다 떄문에  
+이름을 붙일 수도 있고, interface를 구현할 수도 있다.
+
+```
+interface Log {
+
+    fun log()
+}
+
+class Person private constructor(
+    var name: String,
+    var age: Int,
+) {
+
+    companion object Factory : Log {
+        private const val MIN_AGE = 1
+        fun newBaby(name: String): Person {
+            return Person(name, MIN_AGE)
+        }
+
+        override fun log() {
+            println("나는 Person 클래스의 동행 객체 Factory에요")
+        }
+    }
+}
+```
+companion object에 유틸성 함수들을 넣어도 되지만, 최상단 파일을 활용하는 것을 추천
+
+Java에서 Kotlin copanion object를 사용하려면 
+@JvmStatic 을 붙여야 한다~
+
+### 2. 싱글톤
+#### Java
+```
+public class JavaSingleton {
+
+  private static final JavaSingleton INSTANCE = new JavaSingleton();
+
+  private JavaSingleton() { }
+
+  public static JavaSingleton getInstance() {
+    return INSTANCE;
+  }
+
+}
+
+```
+#### Kotlin
+```
+fun main() {
+    println(Singleton.a)
+    Singleton.a += 10
+    println(Singleton.a)
+}
+
+object Singleton {
+    var a: Int = 0
+}
+```
+
+3. 익명 클래스
+#### Java
+```
+ public static void main(String[] args) {
+    moveSomething(new Movable() {
+      @Override
+      public void move() {
+        System.out.println("움직인다~~");
+      }
+
+      @Override
+      public void fly() {
+        System.out.println("난다~~");
+      }
+    });
+  }
+
+  private static void moveSomething(Movable movable) {
+    movable.move();
+    movable.fly();
+  }
+```
+#### Kotlin
+
+### Lec 12. 코틀린에서 object 키워드를 다루는 방법
+- Java의 static 변수와 함수를 만드려면,  
+  Kotlin에서는 companion object를 사용해야 한다.
+- companion object도 하나의 객체로 간주되기 떄문에 이름을 붙일 수 있고, 다른 타입을 상속 받을 수도 있다.
+- Kotlin에서 싱글톤 클래스를 만들 떄 object 키워드를 사용한다.
+- Kotlin애서 익명 클래스를 만들 떄 **object : 타입**을 사용한다.
