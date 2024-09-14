@@ -809,3 +809,49 @@ object Singleton {
 - companion object도 하나의 객체로 간주되기 떄문에 이름을 붙일 수 있고, 다른 타입을 상속 받을 수도 있다.
 - Kotlin에서 싱글톤 클래스를 만들 떄 object 키워드를 사용한다.
 - Kotlin애서 익명 클래스를 만들 떄 **object : 타입**을 사용한다.
+
+## Lec 13. 코틀린에서 중첩 클래스를 다루는 방법
+1. 중첩 클래스의 종류
+2. 코틀린의 중첩 클래스와 내부 클래스
+
+### 2. 코틀린의 중첩 클래스와 내부 클래스
+Java의 static 중첩 클래스(권장되는 클래스 안에 클래스)
+
+```
+fun main() {
+
+}
+
+class JavaHouse(
+    val  address: String,
+    val livingRoom: LivingRoom,
+) {
+    class LivingRoom(
+        private val area: Double,
+    )
+}
+```
+Java의 내부 클래스(권장되지 않는 클래스 안의 클래스)
+```
+class JavaHouse(
+    val  address: String,
+    val livingRoom: LivingRoom,
+) {
+    inner class LivingRoom(
+        private val area: Double,
+    ) {
+        val address: String
+            get() = this@JavaHouse.address
+        
+    }
+}
+```
+
+### 정리
+- 클래스 안에 클래가 있는 경우 종류는 두 가지 였다.
+  - (Java기준) static을 사용하는 클래스
+  - (Java기준) static을 사용하지 않는 클래스
+- 코틀린에서는 이러한 가이드를 따르기 위해
+  - 클래스 안에 기본 클래스를 사용하면 바깥 클래스에 대한 참조가 없고
+  - 바깥 클래스를 참조하고 싶다면, inner 키워드를 붙여야 한다
+- 코틀린 inner class에서 바깥 클래스를 참조하려면 **this@바깥클래스**를 사용한다
