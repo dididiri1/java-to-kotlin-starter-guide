@@ -854,4 +854,140 @@ class JavaHouse(
 - 코틀린에서는 이러한 가이드를 따르기 위해
   - 클래스 안에 기본 클래스를 사용하면 바깥 클래스에 대한 참조가 없고
   - 바깥 클래스를 참조하고 싶다면, inner 키워드를 붙여야 한다
-- 코틀린 inner class에서 바깥 클래스를 참조하려면 **this@바깥클래스**를 사용한다
+- 코틀린 inner class에서 바깥 클래스를 참조하려면 **this@바깥클래스**를 사용한다.
+
+## Lec 14. 코틀린에서 다양한 클래스를 다루는 방법
+
+### 1. Data Class
+- 계층간의 데이터를 전달하기 위한 DTO(Data transfer Object)
+데이터(필드)
+생성자와 getter, equals, hashCode, toString
+
+#### Java
+```
+public class JavaPersonDto {
+
+  private final String name;
+  private final int age;
+
+  public JavaPersonDto(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public int getAge() {
+    return age;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    JavaPersonDto that = (JavaPersonDto) o;
+    return age == that.age && Objects.equals(name, that.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name, age);
+  }
+
+  @Override
+  public String toString() {
+    return "JavaPersonDto{" +
+        "name='" + name + '\'' +
+        ", age=" + age +
+        '}';
+  }
+}
+```
+
+#### Kotlin
+```
+fun main() {
+    val dto1 = PersonDto("홍길동", 100)
+    val dto2 = PersonDto("홍길동", 200)
+
+    println(dto1)
+}
+
+data class PersonDto(
+    val name: String,
+    val age: Int,
+)
+```
+```
+false
+PersonDto(name=홍길동, age=100)
+```
+
+> toString이 자동으로 구현되기 때문에 내부값을 확인할 수 있다.
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/14_01.png?raw=true
+
+### 2. Enum Class
+#### Java
+```
+public enum JavaCountry {
+
+  KOREA("KO"),
+  AMERICA("US");
+
+  private final String code;
+
+  JavaCountry(String code) {
+    this.code = code;
+  }
+
+  public String getCode() {
+    return code;
+  }
+
+}
+```
+#### Kotlin
+```
+enum class Country (
+    private val code: String,
+){
+
+    KOREA("KO"),
+    AMERICA("US");
+}
+```
+> when은 Eunm Class 혹은 Sealed Class와 함께 사용할 경우, 더욱더 진가를 발휘한다.
+
+```
+fun handleCountry(country: Country) {
+    when (country) {
+        Country.KOREA -> TODO()
+        Country.AMERICA -> TODO()
+    }
+}
+```
+
+> 컴파일러가 country의 모든 타입을 알고 있어
+> 다른 타입에 대한 로직(else)을 작성하지 않아도 된다
+
+3. Sealed Class, Sealed Interface
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/14_02.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/14_03.png?raw=true
+
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/14_04.png?raw=true
+
+
+
+> 추상화가 필요한 Entity or DTO에 sealed class를 활용  
+> 추가로, JDK17 에서도 Sealed Class가 추가되었다.
+
+### 정리 
+- Kotlin의 Data class를 사용하면 equals, hashCode, toString을 자동으로 만들어준다.
+- Kotlin의 Enum Class는 Java의 Enum Class와 동일하지만, when과 함께사용함으로써큰장점을갖게된다.
+- Enum Class보다 유연하지만, 하위클래스를 제한하는 Sealed Class 역시 when과 함께 주로사용된다.
