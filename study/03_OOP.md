@@ -1157,3 +1157,135 @@ fun String.lastChat(): Char {
 - Kotlin에서는 함수 안에 함수를 선언할 수 있고,
   지역함수라고 부른다
 
+## Lec 17. 코틀린에서 람다 함수를 다루는 방법
+1. Java에서 람다를 다루기 위한 노력
+2. 코틀린에서의 람다
+3. Closure
+4. 다시 try wihth resources
+
+### 1. Java에서 람다를 다루기 위한 노력
+
+### 2. 코틀린에서의 람다
+
+```
+fun main() {
+    val fruits = listOf(
+        Fruit("사과", 1_000),
+        Fruit("사과", 1_200),
+        Fruit("사과", 1_200),
+        Fruit("사과", 1_500),
+        Fruit("바나나", 3_000),
+        Fruit("바나나", 3_200),
+        Fruit("바나나", 2_500),
+        Fruit("수박", 10_000),
+    )
+    
+    // 람다를 만드는 방법 1
+    val isApple = fun(fruit: Fruit): Boolean {
+        return fruit.name == "사과"
+    }
+    
+    // 람다를 만드는 방법 2
+    val isApple2 = { fruit: Fruit -> fruit.name == "사과"}
+    
+    // 람다를 직접 호출하는 방법 1
+    isApple(fruits[0])
+    
+    // 람다를 직접 호출하는 방법 2
+    isApple.invoke(fruits[0])
+
+}
+```
+
+```
+fun main() {
+    val fruits = listOf(
+        Fruit("사과", 1_000),
+        Fruit("사과", 1_200),
+        Fruit("사과", 1_200),
+        Fruit("사과", 1_500),
+        Fruit("바나나", 3_000),
+        Fruit("바나나", 3_200),
+        Fruit("바나나", 2_500),
+        Fruit("수박", 10_000),
+    )
+
+    val isApple = fun(fruit: Fruit): Boolean {
+        return fruit.name == "사과"
+    }
+
+    filterFruits(fruits, isApple)
+
+    filterFruits(fruits) {fruit -> fruit.name == "사과" }
+
+    filterFruits(fruits) {fruit -> fruit.name == "사과" }
+
+    filterFruits(fruits) {a -> a.name == "사과" } // 이름을 명시해주고 화살표 쓰는 방법
+
+    filterFruits(fruits) {it.name == "사과" } // 익명함수를 만들떄 파라미터가 1개인 경우 it 사용해도됨
+}
+
+private fun filterFruits(fruits: List<Fruit>, filter: (Fruit) -> Boolean
+):List<Fruit> {
+    val results = mutableListOf<Fruit>()
+    for (fruit in fruits) {
+        if(filter(fruit)) {
+            results.add(fruit)
+        }
+    }
+    return results
+}
+```
+
+### 3. Closure
+
+#### Java
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_01.png?raw=true
+
+#### Kotiln
+- 코틀린에서는 람다가 시작하는 지점에 참조하고 있는 변수들을 모두 포획하여 그 정보를 가지고 있다.
+- 이렇케 해야만 람다를 진정한 일급 시민으로 간주할 수 있다. 이데이터 구조를 Closure라고 부른다.
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_02.png?raw=true
+
+### 4. 다시 try with resources
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_03.png?raw=true
+
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_04.png?raw=true
+
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_05.png?raw=true
+
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_06.png?raw=true
+
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_07.png?raw=true
+
+### Lec17.코틀린에서 람다를 다루는 방법 - 정리
+
+- 코틀린에서 람다는 두 가지 방법으로 만들 수 있고, {} 방법이 더 많이 사용된다.
+```
+    // 람다를 만드는 방법 1
+    val isApple = fun(fruit: Fruit): Boolean {
+        return fruit.name == "사과"
+    }
+    
+    // 람다를 만드는 방법 2
+    val isApple2 = { fruit: Fruit -> fruit.name == "사과"}
+```
+- 함수를 호출하며, 마지막 파리미터인 람다를 쓸 떄는 소괄호 밖으로 람다를 뺄 수 있다.
+```
+
+    filterFruits(fruits) {fruit -> fruit.name == "사과" }
+
+    filterFruits(fruits) {it.name == "사과" } 
+```
+- 람다의 마지막 expression 결과는 람다의 반환 값이다
+```
+filterFruits(fruits) { fruit -> 
+  println("사과만 받는다..!!)
+  fruit.name == "사과"
+```
+- 코틀린에서는 Closure를 사용하여 non-final 변수도 람다에서 사용할 수 있다
