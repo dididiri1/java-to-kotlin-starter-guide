@@ -1081,3 +1081,79 @@ fun main() {
   - Java에서 Kotiln 컬렉션을 가져갈 때는 불변 컬렉션을 수정할 수도 있고, non-nullable 컬렉션에 null을 넣을 수도 있다.
   - Kotiln 에서 Java 컬렉션을 가져갈 때는 플랫폼타입을 주의해야 한다.
 
+## Lec 16. 코틀린에서 다양한 함수를 다루는 방법
+
+1. 확장함수
+2. infix 함수
+3. inline 함수
+4. 지역함수
+
+### 1. 확장함수
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_01.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_02.png?raw=true
+
+
+
+```
+fun main() {
+ val str = "ABC"
+ println(str.lastChat())
+}
+
+fun String.lastChat(): Char {
+    return this[this.length -1]
+}
+
+```
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_03.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_04.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_05.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_06.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_07.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_08.png?raw=true
+
+- 함자함수가 pulbic이고, 확장함수에서 수신객체클래스의 private 함수를 가져오면 캡슐화가 깨지는거 아닌가?
+- 확장함수는 클래스에 있는 private 또는 protected 멤버를 가져 올수 없다.
+- 멤버함수와 확장함수의 시그니처 동일하다면 멤버함수가 우선적으로 호출된다.
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_09.png?raw=true
+
+> 주의점:
+> 화장함수를 만들었지만, 다른 기능의 똑같은 멤버함수가 생기면 오류가 발생할 수 있다.
+
+#### 확장함수가 오버라이드 된다면?
+- 해당 변수의 현재 타입 즉, 정적인 타입에 의해 어떤 확장함수가 호출될지 결정된다.
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_10.png?raw=true
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_11.png?raw=true
+
+#### 확장함수 - 중간정라
+1. 확장함수는 원본 클래스의 private, protected 멤버 접근이 안된다.
+2. 멤버함수, 확장함수 중 멤버함수에 우선권이 있다.
+3. 확장함수는 현재 타입을 기준으로 호출된다.
+
+#### Java에서 Kotiln 확장함수를 가져다 사용할수 있다.
+
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_12.png?raw=true
+
+- Java 코드가 있는 상황에서, Kotlin 코드로 추가 기능 개발을 하기
+  위해 확장함수와 확장프로퍼티가 등장했다.
+- 확장함수는 원본 클래스의 private, protected 멤버 접근이 안된다!
+- 멤버함수, 확장함수 중 멤버함수에 우선권이 있다!
+- 확장함수는 현재 타입을 기준으로 호출된다!
+- Java에서는 static 함수를 쓰는것처럼
+  Kotlin의 확장함수를 쓸 수 있다
+
+- 함수 호출 방식을 바꿔조는 infix 함수가 존재한다.
+- 함수를 복사-붙여넣기 하는 inline 함수가 존재한다.
+- Kotlin에서는 함수 안에 함수를 선언할 수 있고,
+  지역함수라고 부른다
+
