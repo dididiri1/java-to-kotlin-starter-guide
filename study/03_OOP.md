@@ -8,13 +8,13 @@
 
 ### 1.클래스와프로퍼티
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_01.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_02.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_03.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_03.png?raw=true)
 
 ```
 public class JavaPerson {
@@ -94,7 +94,7 @@ public JavaPerson(String name, int age) {
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_04.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_04.png?raw=true)
 
 
 - init(초기화) 블록은 생성자가 호출되는 시점에 호출된다.
@@ -149,19 +149,19 @@ class Person (
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_05.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_05.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_06.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_06.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_07.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_07.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_08.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_08.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_09.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_09.png?raw=true)
 ```
 초기화 블록
 부생성자 1
@@ -244,9 +244,9 @@ class Person(
 > person.name 하면 name에 대한 getter가 호출된다.   
 > 즉 name은 name에 대한 getter를 호출 하니깐 다시 get를 부른다.
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_11.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_11.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/09_12.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/09_12.png?raw=true)
 
 - 개인적으로는 custom getter에서 backing field를 쓰는 경우는 드물다.
 - 함수로 처리할수도 있다.
@@ -300,7 +300,7 @@ class Person(
 
 ### 1.추상 클래스
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_01.png?raw=true)
 
 Java
 ```
@@ -340,7 +340,9 @@ abstract class Animal(
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_02.png?raw=true)
+
+
 Java
 ```
 public class JavaCat extends JavaAnimal {
@@ -372,7 +374,7 @@ class Cat (
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_03.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_03.png?raw=true)
 
 Java
 ```
@@ -428,22 +430,22 @@ class Penguin(
         get() = super.legCount + this.wingCount
 }
 ```
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_04.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_04.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_05.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_05.png?raw=true)
 
 - 상위 클래스에 접근하는 키워드는 supper로 Java와 똑같다.
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_06.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_06.png?raw=true)
 
 #### Java, Kotlin 모두 추상 클래스는인 스턴스화 할 수 없다
 
 ### 2. 인터페이스
 #### Flyable과 Swimmable을 구현한 Penguin
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_07.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_07.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_08.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_08.png?raw=true)
 
 Java
 ```
@@ -485,7 +487,7 @@ interface Flyable {
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/10_09.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/10_09.png?raw=true)
 
 Java
 ```
@@ -637,10 +639,10 @@ public abstract class StringUtils {
 프로퍼티의 가시성을 제어하는 방법으로는...
 
 ### 3. 다양한 구성요소의 접근 제어 - 생성자
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/11_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/11_01.png?raw=true)
 
 ### 3. 다양한 구성요소의 접근 제어 - 생성자
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/11_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/11_02.png?raw=true)
 
 ### 4. Java와 Kotlin을 함께 사용할 때주의할점
 
@@ -927,7 +929,7 @@ PersonDto(name=홍길동, age=100)
 
 > toString이 자동으로 구현되기 때문에 내부값을 확인할 수 있다.
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/14_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/14_01.png?raw=true)
 
 ### 2. Enum Class
 #### Java
@@ -975,12 +977,12 @@ fun handleCountry(country: Country) {
 
 3. Sealed Class, Sealed Interface
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/14_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/14_02.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/14_03.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/14_03.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/14_04.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/14_04.png?raw=true)
 
 
 
@@ -1090,9 +1092,9 @@ fun main() {
 
 ### 1. 확장함수
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_01.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_02.png?raw=true)
 
 
 
@@ -1108,32 +1110,32 @@ fun String.lastChat(): Char {
 
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_03.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_03.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_04.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_04.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_05.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_05.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_06.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_06.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_07.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_07.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_08.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_08.png?raw=true)
 
 - 함자함수가 pulbic이고, 확장함수에서 수신객체클래스의 private 함수를 가져오면 캡슐화가 깨지는거 아닌가?
 - 확장함수는 클래스에 있는 private 또는 protected 멤버를 가져 올수 없다.
 - 멤버함수와 확장함수의 시그니처 동일하다면 멤버함수가 우선적으로 호출된다.
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_09.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_09.png?raw=true)
 
 > 주의점:
 > 화장함수를 만들었지만, 다른 기능의 똑같은 멤버함수가 생기면 오류가 발생할 수 있다.
 
 #### 확장함수가 오버라이드 된다면?
 - 해당 변수의 현재 타입 즉, 정적인 타입에 의해 어떤 확장함수가 호출될지 결정된다.
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_10.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_10.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_11.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_11.png?raw=true)
 
 #### 확장함수 - 중간정라
 1. 확장함수는 원본 클래스의 private, protected 멤버 접근이 안된다.
@@ -1142,7 +1144,7 @@ fun String.lastChat(): Char {
 
 #### Java에서 Kotiln 확장함수를 가져다 사용할수 있다.
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/16_12.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/16_12.png?raw=true)
 
 - Java 코드가 있는 상황에서, Kotlin 코드로 추가 기능 개발을 하기
   위해 확장함수와 확장프로퍼티가 등장했다.
@@ -1240,28 +1242,28 @@ private fun filterFruits(fruits: List<Fruit>, filter: (Fruit) -> Boolean
 ### 3. Closure
 
 #### Java
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/17_01.png?raw=true)
 
 #### Kotiln
 - 코틀린에서는 람다가 시작하는 지점에 참조하고 있는 변수들을 모두 포획하여 그 정보를 가지고 있다.
 - 이렇케 해야만 람다를 진정한 일급 시민으로 간주할 수 있다. 이데이터 구조를 Closure라고 부른다.
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/17_02.png?raw=true)
 
 ### 4. 다시 try with resources
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_03.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/17_03.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_04.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/17_04.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_05.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/17_05.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_06.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/17_06.png?raw=true)
 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/17_07.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/17_07.png?raw=true)
 
 ### Lec17.코틀린에서 람다를 다루는 방법 - 정리
 
