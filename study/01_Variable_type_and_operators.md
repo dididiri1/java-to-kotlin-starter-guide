@@ -252,7 +252,7 @@ val number3 = 3.0f // Float
 val number4 = 3.0 // Double 
 ``` 
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/03_01.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/03_01.png?raw=true))
 
 ```
 int number1 = 4;
@@ -390,11 +390,11 @@ println(str[1])
 4. 연산자 오버로딩
 
 ### 1. 단항 연산자 / 산술 연산자
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/04_01.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/04_01.png?raw=true))
 
 
 ### 2. 비교 연산자와 동등성, 동일성
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/04_02.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/04_02.png?raw=true))
 
 #### Java
 ```
@@ -424,13 +424,13 @@ fun main() {
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/04_03.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/04_03.png?raw=true))
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/04_04.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/04_04.png?raw=true))
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/04_05.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/04_05.png?raw=true))
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/04_06.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/04_06.png?raw=true))
 
 #### Java
 ```
@@ -489,7 +489,7 @@ fun fun2(): Boolean {
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/04_07.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/04_07.png?raw=true))
 
 - in / !in
     - 컬렉션이나 범위에 포함되어 있다, 포함되어 있지 않다

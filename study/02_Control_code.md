@@ -53,7 +53,7 @@ fun getPassOrFail(score: Int): String{
 > Java에서 if-else는 Statement이지만,  
 > Kotlin에서는 Expression입니다
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/05_01.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/05_01.png?raw=true))
 
 - if 문을 하나의 값으로 취급하지 않으니 에러가 난다 Statement
 Java
@@ -71,14 +71,14 @@ String grade = if (score >= 50) {
 String greade = score >- 50 ? "P" : "F";
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/05_02.png?raw=true))
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/05_02.png?raw=true))
 
 
 #### Kotlin에서는 if-else를 expression으로 사용할 수 있기 때문에 3항연산자가없습니다
 
 #### if – else if – else 문도 문법이 동일합니다
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/05_03.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/05_03.png?raw=true)
 
 ### switch와 when
 
@@ -125,7 +125,7 @@ fun getGradeWithSwitch2(score: Int): String {
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/05_04.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/05_04.png?raw=true)
 
 Kotlin
 ```
@@ -184,7 +184,7 @@ fun judgeNumber2(number: Int) {
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/05_05.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/05_05.png?raw=true)
 
 ### 정리 
 - if / if – else / if - else if – else 모두 Java와 문법이 동일하다.
@@ -249,15 +249,15 @@ for (i in 1..5 step 2) {
 ```
 
 ### 3. Progression과 Range
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_01.png?raw=true)
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_02.png?raw=true)
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_03.png?raw=true)
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_04.png?raw=true)
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_05.png?raw=true)
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_06.png?raw=true)
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_07.png?raw=true)
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_08.png?raw=true)
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/06_09.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_03.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_04.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_05.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_06.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_07.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_08.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/06_09.png?raw=true)
 
 ### 4. While문
 
@@ -329,7 +329,7 @@ fun parseIntOrThrow(str: String): Int? {
     }
 }
 ```
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/07_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/07_01.png?raw=true)
 
 ### 2. Checked Exception과 Unchecked Exception
 Kotlin
@@ -343,7 +343,7 @@ fun readFile() { // throws 구문이 없다!!
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/07_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/07_02.png?raw=true)
 
 ### 3. try with resources
 Java
@@ -420,7 +420,7 @@ fun max2(a: Int, b: Int): Int =
 fun max(a: Int, b: Int): Int = if  a > b) a else b
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/08_01.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/08_01.png?raw=true)
 
 > block { } 을 사용하는 경우에는 반환 타입이 Unit이 아니면     
 > 명시적으로 작성해주어야 한다
@@ -448,13 +448,13 @@ fun repeat(str: String, num: Int = 3, useNewLine: Boolean = true) {
 }
 ```
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/08_02.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/08_02.png?raw=true)
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/08_03.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/08_03.png?raw=true)
 
 #### named argument parameter
 
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/tree/main/study/images/08_04.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/08_04.png?raw=true)
 
 
 ```
