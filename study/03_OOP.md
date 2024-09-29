@@ -1289,3 +1289,168 @@ filterFruits(fruits) { fruit ->
   fruit.name == "사과"
 ```
 - 코틀린에서는 Closure를 사용하여 non-final 변수도 람다에서 사용할 수 있다
+
+## Lec 18. 코틀린에서 컬렉션을 함수형으로 다루는 방법
+1. 필터와 맵
+2. 다양한 컬렉션 처리 기능
+3. List를 Map으로
+4. 중첩된 컬렉션 처리
+
+### 1. 필터와 맵
+> filer / filterIndexed / map / mapIndexed / mapNotNull
+
+```
+fun main() {
+    val fruits = listOf(
+        Fruit("사과", 1_000),
+        Fruit("사과", 1_200),
+        Fruit("사과", 1_200),
+        Fruit("사과", 1_500),
+        Fruit("바나나", 3_000),
+        Fruit("바나나", 3_200),
+        Fruit("바나나", 2_500),
+        Fruit("수박", 10_000),
+    )
+
+    // filter : 사과만 주세요!
+    val apples = filterFruits(fruits) {fruit -> fruit.name == "사과" }
+
+    // map : 사과의 가격들을 알려주세요!
+    val apples2 = fruits.filter { fruit -> fruit.name == "사과" }
+        .map { fruit -> fruit.price }
+
+    //필터에서 인덱스가 필요하다면?!
+    val apples3 = fruits.filterIndexed { idx, fruit ->
+        println(idx)
+        fruit.name == "사과"
+    }
+    
+    // 맵에서 인덱스가 필요하다면?!
+    val applePrices = fruits.filter { fruit -> fruit.name == "사과" }
+        .mapIndexed { idx, fruit ->
+            println(idx)
+            fruit.price
+        }
+    
+}
+
+private fun filterFruits(fruits: List<Fruit>, filter: (Fruit) -> Boolean
+):List<Fruit> {
+
+    return fruits.filter(filter)
+}
+
+```
+
+### 2. 다양한 컬렉션 처리 기능
+- 모든 과일이 사과인가요?!
+- 혹시 출고가 10,000원 이상의 과일이 하나라도 있나요?!
+
+#### all : 조건을 모두 만족하면 true 그렇지 않으면 false
+```
+val isAllApple = fruits.all { fruit -> fruit.name == "사과" }
+```
+#### none : 조건을 모두 불만족하면 true 그렇지 않으면 false
+```
+val isNoApple = fruits.none { fruit -> fruit.name == "시과" }
+```
+#### any : 조건을 하나라도 만족하면 true 그렇지 않으면 false
+```
+val isNoApple2 = fruits.any { fruit -> fruit.price >= 10_000 }
+```
+
+- 과일이 몇 종류 있죠?!
+#### count : 개수를 센다
+```
+val fruutCount = fruits.count()
+```
+
+
+#### sortedBy : (오른차순) 정렬을 한다
+```
+val fruitCount = fruits.sortedBy { fruit -> fruit.price
+```
+
+
+#### sortedByDescending : (내림차순) 정렬을 한다
+```
+val fruitCount3 = fruits.sortedByDescending { fruit -> fruit.price }
+```
+
+
+#### distinctBy : 변형된 값을 기준으로 중복을 제거한다
+```
+val distinctFruitNames = fruits.distinctBy { fruit -> fruit.name}
+        .map { fruit -> fruit.name }
+```
+
+- 첫번째 과일만 주세요!
+- 마지막 과일만 주세요!
+#### first : 첫번째 값을 가져온다 (무조건 null이 아니어야함)
+#### firstOrNull : 첫번째 값 또는 null을 가져온다
+```
+val distinctFruitNames = fruits.distinctBy { fruit -> fruit.name}
+        .map { fruit -> fruit.name }
+```
+
+#### last : 마지막 값을 가져온다 (무조건 null이 아니어야함)
+#### lastOrNull : 마지막 값 또는 null을 가져온다
+```
+val distinctFruitNames = fruits.distinctBy { fruit -> fruit.name}
+        .map { fruit -> fruit.name }
+```
+
+> all / none / any / count / sortedBy / sortedByDescending / distinctBy
+> first / firstOrNull / last / lastOrNull
+
+### 3. List를 Map으로
+- 과일이름 -> List<과일> Map이 필요해요!
+
+#### groupBy: 이름을 기준으로 그풉핑이 됨
+```
+val map: Map<String, List<Fruit>> = fruits.groupBy { fruit -> fruit.name }
+```
+
+- id -> 과일 Map이 필요해요!
+#### associateBy : id를 통해서 매핑해야 할때 중복돠지 않는 키를 가지고 map를 만들때 사용함
+```
+val map: Map<Long, Fruit> = fruits.associateBy { fruit -> fruit.id }
+```
+
+- 과일이름 -> List<출고가> Map이 필요해요!
+#### associateBy : id를 통해서 매핑해야 할때 중복돠지 않는 키를 가지고 map를 만들때 사용함
+```
+val map: Map<String, List<Int>> = fruits
+        .groupBy({fruit -> fruit.name}, {fruit -> fruit.price })
+```
+
+- Map에 대해서도 앞선 기능들 대부분 사용할 수 있음
+```
+val map: Map<String, List<Fruit>> = fruits.groupBy { fruit -> fruit.name }
+  .filter { (key, vale) -> key == "사과" }
+```
+
+### 4. 중첩된 컬렉션 처리
+
+- 이 상황에서, 출고가와 현재가가 동일한 과일을 골라주세요
+```
+val samePriceFruits = fruitsInList.flatMap { 
+  list.filter { fruit -> fruit.factoryPrice == fruit.currentPrice}
+}
+```
+
+#### 리팩토링 - 확장함수
+```
+data class Fruit(
+    val id: Long,
+    val name: String,
+    val factoryPrice: Long,
+    val currentPrice: Long,
+) {
+    val isSamePrice: Boolean
+        get() = factoryPrice == currentPrice
+}
+```
+```
+val samePriceFruits = fruitsInList.flatMap { list -> list.samePriceFilter }
+```
