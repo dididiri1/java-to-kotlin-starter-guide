@@ -1,4 +1,6 @@
-# 섹션 1 코틀린에서 변수와 타입, 연산자를 다루는 방법
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/00_00.png?raw=true)
+
+# 섹션 2 코틀린에서 변수와 타입, 연산자를 다루는 방법
 
 ## 1강. 코틀린에서 변수를 다루는 방법
 
@@ -542,3 +544,6 @@ fun main() {
 ```
 > 코틀린에서는 객체 마다 직접 플러스 연산, 마이너스 연산, 단항 연산, 비교 연산 등  
 > 다 직접 정의할 수 있다.
+
+### Reference
+- [인프런 | 자바 개발자를 위한 코틀린 입문(Java to Kotlin Starter Guide)](https://inf.run/1UQiA)

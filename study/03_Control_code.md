@@ -1,3 +1,5 @@
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/00_00.png?raw=true)
+
 # 섹션 2 코틀린에서 코드를 제어하는 방법
 
 ## 5강. 코틀린에서 제어문을 다루는 방법
@@ -532,3 +534,5 @@ fun printAll(vararg string: String) {
 - 함수를 호출할때 특정 파라미터를 지정해 넣어줄 수 있다.
 - 가변인자에는 vararg 키워드를 사용하며, 가변인자 함수를 배열과 호출할 떄는 *를 붙여주어야 한다.
 
+### Reference
+- [인프런 | 자바 개발자를 위한 코틀린 입문(Java to Kotlin Starter Guide)](https://inf.run/1UQiA)
