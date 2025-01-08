@@ -1,4 +1,4 @@
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/00_00.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/00_00.jpg?raw=true)
 
 # 섹션 2 코틀린에서 변수와 타입, 연산자를 다루는 방법
 

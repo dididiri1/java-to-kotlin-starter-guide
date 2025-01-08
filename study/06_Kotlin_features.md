@@ -1,4 +1,4 @@
-![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/00_00.png?raw=true)
+![](https://github.com/dididiri1/java-to-kotlin-starter-guide/blob/main/study/images/00_00.jpg?raw=true)
 
 # 섹션 6. 추가적으로 알아두어야 할 코틀린 특성
 
